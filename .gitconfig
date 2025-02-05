@@ -1,5 +1,7 @@
 [user]
-	name = Cole Caccamise
-	email = colecaccamise@gmail.com
+	name = Akmal Yunusov
+	email = ayunusov2301@gmail.com
+[core]
+    autocrlf = input
 [init]
 	defaultBranch = main

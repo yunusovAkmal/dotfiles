@@ -1,24 +1,47 @@
+# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
 
-CASE_SENSITIVE="true"
-# ENABLE_CORRECTION="true"
+# get machine's ip address
+alias ip="ipconfig getifaddr en0"
 
-plugins=(git)
+# edit global zsh configuration
+alias zshconfig="vim ~/.zshrc"
+# reload zsh configuration
+alias zshsource="source ~/.zshrc"
+# reload zsh configuration
+alias ohmyzsh="cd ~/.oh-my-zsh"
 
-source $ZSH/oh-my-zsh.sh
+# navigate to global ssh directory
+alias sshhome="cd ~/.ssh"
+# edit global ssh configuration
+alias sshconfig="vim ~/.ssh/config"
 
-export EDITOR='code -w'
+# edit global git configuration
+alias gitconfig="vim ~/.gitconfig"
+# load zsh-completions
+autoload -U compinit && compinit
+
+# use nvm
+source /opt/homebrew/opt/nvm/nvm.sh
 
 # -------
 # Aliases
 # -------
-alias l="ls" # List files in current directory
 alias ll="ls -al" # List all files in current directory in long list format
 alias o="open ." # Open the current directory in Finder
-alias ghost="gs" # replace ghostscript command so git status works properly
-alias lint="npx next lint"
+alias c="clear"
 
 # -------
 # pnpm Aliases
@@ -31,15 +54,28 @@ alias pb="pnpm build"
 alias pr="pnpm run"
 alias psd="pnpm start:dev"
 
+# -------
+# yarn Aliases
+# -------
+alias y="yarn"
+alias yi="yarn install"
+alias ya="yarn add"
+alias yd="yarn dev"
+alias yb="yarn build"
+alias yr="yarn run"
+alias ysd="yarn start:dev"
+
 # ----------------------
 # Git Aliases
 # ----------------------
 alias gi='git init'
-alias gro='git remote add origin'
-alias ga='git add'
-alias gaa='git add .'
-alias gcm='git commit -m'
-alias gpsh='git push'
-alias gpsho='git push -u origin'
+alias ga="git add ."
+alias gc="git commit -m"
+alias gs="git status"
 alias gss='git status -s'
-alias gs='echo ""; echo "*********************************************"; echo -e "   DO NOT FORGET TO PULL BEFORE COMMITTING"; echo "*********************************************"; echo ""; git status'
+alias gb="git branch"
+alias gp="git push"
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gcl="git clone"
+alias gpl="git pull"
+alias gpo='git push -u origin'
