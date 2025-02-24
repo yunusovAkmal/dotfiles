@@ -139,3 +139,16 @@ alias ns="npm start"                  # Start the application
 alias nb="npm build"                  # Build the application
 alias nr="npm run"                    # Run an npm script
 alias nd="npm run dev"                # Run the development server
+
+# ----------------------
+dev() {
+  if [[ -f "package-lock.json" ]]; then
+    npm run dev
+  elif [[ -f "yarn.lock" ]]; then
+    yarn dev
+  elif [[ -f "pnpm-lock.yaml" ]]; then
+    pnpm dev
+  else
+    echo "No recognized lock file found (package-lock.json, yarn.lock, pnpm-lock.yaml)"
+  fi
+}
